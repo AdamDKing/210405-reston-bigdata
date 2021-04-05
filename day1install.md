@@ -13,6 +13,7 @@ We’ll need a few VSCode extensions.  You can reach the extensions by clicking 
 - Remote - WSL, from Microsoft
 - Scala Syntax (official), from scala-lang
 - Scala Metals
+
 I’m not sure whether it’s better to install these Locally or on WSL.  Both seem to work in my testing, but we may discover one is better than the other.
 
 With this, VSCode should be setup for basic Scala development.  Your Ubuntu environment probably isn’t yet.  You’ll need to install java and then sbt: 
