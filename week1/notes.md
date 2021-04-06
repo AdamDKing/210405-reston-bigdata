@@ -39,7 +39,46 @@
 
 - GitHub: very popular remote repository for git.  Git is a tool that runs on our machines, github is a website that saves/shares our repository.
 
+#### How does Java run?
+
+We write Java code in .java files.  This java code can't immediately run.  Instead, we run javac on the .java files to produce something called bytecode.  Java bytecode is stored in .class files.  Bytecode is somewhat human-readable, though typically less friendly than java code.  We run the compiled bytecode by running it in the Java Virtual Machine (JVM).  Inside the JVM is a Just-In-Time (JIT) Compiler that compiles bytecode down into machine code for our processor.
+
+If you need to run Java on a machine, you need the JRE (Java Runtime Environment), which includes the JVM and core Java libraries.  If you need to write+run Java on a machine, you need the JDK (Java Development Kit), which includes a JRE and javac.
+
 #### What is Scala?
 
+The name Scala comes from "Scalable Language", because Martin Odersky, the original author, wanted the language to expand based on the needs of its users.  Odersky was a major contributor to javac, the java compiler, and Scala is built "on top of" Java.  The .scala files that we write are converted into java bytecode, which then runs on the JVM.  This means Scala can take advantage of the ubiquity and optimization of the JVM, as well as taking advantage of Java libraries.
 
+Scala:
+- Is a high level language, meaning it abstracts away underlying hardware (runs on JVM)
+- Is statically typed, meaning variables cannot change types.
+- Has a type inference system, so type does not always need to be declared
+  - var y: String = "hello"
+  - var y = "hello"
+  - ^ both of these lines have the same effect.
+- Has a REPL (Read, Eval, Print, Loop).  The Scala REPL lets us run scala interactively, instead of always needing to write-compile-run our full program
+- Compiles down to java bytecode and is interoperable with Java.  Runs on the JVM, so understanding JVM architecture means we understand how Scala runs
+  - we'll discuss stack + heap + pass by value/reference later
+- Supports almost all Java functionality (no checked exceptions), draws inspiration from other languages as well.
+- Supports OOP Paradigm
+  - Achieves this by supporting Java functionality, with a few tweaks.  We have classes and objects, objects have state and behaviour, 4 pillars of OOP, ...
+- Supports FP Paradigm
+  - Functions are first-class citizens in Scala, meaning we can pass functions in as arguments, return functions from other functions, and store functions in variables and collections.
+  - We won't do real FP, but we will make use of map, reduce, filter, fold, pure functions, higher-order functions.
 
+#### Programming Paradigms
+
+##### Imperative Programming
+
+In the imperative paradigm, we write our program as a list of instructions for the computer to carry out.  This works fine to a point, but doesn't scale well for large teams or complex applications.
+
+##### Object Oriented Programming
+
+In the OOP paradigm, we write our program by defining classes and instantiating objects from those classes.  The program functions via the interaction + evolution of objects over time.  Toy examples of OOP use classes like Dog or Truck, in practice your classes are more like JsonParser, CliFactory, ApplicationContext, LoadTimeWeaver, ...  Often OOP applications are structured using Design Patterns.
+
+##### Functional Programming
+
+In the FP paradigm, we write our program by defining pure functions and our program executes via the application and composition of pure functions.  We apply functions to immutable data and compose functions to achieve our program's goals.  We won't do full FP in training, but we will use some FP concepts:
+- Function: something that takes an input and produces an output
+- Pure Function: a function that only takes an input and produces an output.  It doesn't modify the input, it doesn't read data other than the input, and it doesn't do anything other than produce an output.  It has no *side effects*.  A pure function, run with the same input, will *always* produce the same output, which makes pure functions very easy to test.
+- Higher order function: a function that takes another function as an argument, returns a function, or both.  Notable higher order functions: map, reduce, filter, foreach.
