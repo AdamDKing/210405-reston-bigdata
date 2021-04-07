@@ -67,6 +67,7 @@ object FunctionsOperators {
     println(x + 3) // same logic, operator syntax
     println(x.equals(5))
     println(x equals 5) //same logic, operator syntax
+    
 
     class MagicNum(var value: Int) {
 
@@ -83,6 +84,34 @@ object FunctionsOperators {
     var m1 = new MagicNum(5)
     var m2 = new MagicNum(7)
     println(m1 + m2)
+
+    //reduce takes a function that takes 2 arguments
+    // the reducing function is called repeatedly, passing in the result of the prior reduction
+    // and the next element.  In this way the entire collection is reduced to a single value
+    println(List(1,2,3,4,5).reduce((x:Int, y:Int) => {
+      println(s"$x + $y = ${x+y}")
+      x+y
+    }))
+    // Adam's guess for the operations:
+    // 1 + 2 => 3
+    // 3 + 3 => 6
+    // 6 + 4 => 10
+    // 10 + 5 => 15
+
+    //another reduce for max
+    println(List(1,2,3,6,4,5).reduce((x:Int, y:Int) => {
+      println(s"$x , $y")
+      //if is an expression in scala.  This means it returns a value.
+      // we don't have the ternary operator ( ? : ) in Scala, but if-expressions work similarly
+      if (x>y) x else y
+    }))
+
+    println(List(1,2,6,3,4,5).reduce(_ max _))
+    //(x:Int,y:Int) => {x max y}
+    //most functions above are pure functions, except the ones that print
+    // printing to the console is a side effect, which makes the function impure
+    // a pure function takes only arguments as input, produces only return values as output
+    // has no other effects and reads from nowhere else other than its argument(s)
 
   }
 }
