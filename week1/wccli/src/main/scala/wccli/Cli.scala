@@ -29,6 +29,9 @@ class Cli {
         case commandArgPattern(cmd, arg) if cmd == "getfiles" => {
           FileUtil.getTopLevelFilenames().foreach(println)
         }
+        case commandArgPattern(cmd, arg) if cmd == "first100chars" => {
+          println(FileUtil.getTextContent(arg).substring(0,100))
+        }
         case commandArgPattern(cmd, arg) if cmd == "exit" => {
           continueMenuLoop = false
         }
@@ -56,6 +59,7 @@ class Cli {
       "Menu options:",
       "echo [word]: repeats word back to you",
       "getfiles: lists files in current directory",
+      "first100chars [filename]: print the first 100 characters of a file",
       "exit: exits WC CLI"
     ).foreach(println)
 
