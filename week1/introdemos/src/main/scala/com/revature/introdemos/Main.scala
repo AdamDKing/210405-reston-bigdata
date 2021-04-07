@@ -1,3 +1,5 @@
+package com.revature.introdemos
+
 /** Entrypoint to our Scala application
   */
 object Main {
@@ -11,6 +13,8 @@ object Main {
   def main(args: Array[String]): Unit = {
     //a little interesting, methods that don't take arguments can be called without ():
     // this has a fancy name: Uniform Access Principle
-    Basics.run
+    //Basics.run
+    //StackHeap.run
+    FunctionsOperators.run
   }
 }

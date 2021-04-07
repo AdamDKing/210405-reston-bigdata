@@ -1,3 +1,5 @@
+package com.revature.introdemos
+
 //Define an object: Basics.  The object keyword creates a singleton object,
 // meaning there is only one object of that type.
 // The object keyword replaces the functionality of the static keyword in Java:
