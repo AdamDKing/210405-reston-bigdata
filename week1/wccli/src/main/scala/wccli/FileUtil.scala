@@ -29,6 +29,7 @@ object FileUtil {
     * Accessing files is an exception-prone process -- it's very easy for some problems to occur
     * We should keep this in mind
     *
+    * @throws FileNotFoundException
     * @param filename
     * @return entire file content
     */

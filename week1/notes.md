@@ -90,3 +90,17 @@ Understanding the memory usage and execution of our scala applications makes deb
 We've discussed an entrypoint to our scala applications, the main method.  When we run our application, the stack begins empty, and the first thing that happens is the main method goes on the stack.  The main method, being on top of the stack, starts execution.  In our demo, our main method only has a single line, Basics.run.  This line calls the run() method in the Basics object.  New method calls, including this one, go on top of the stack.  Our stack in the JVM is a stack (the data structure), meaning it is LIFO, Last-In-First-Out.  Execution of main() is paused, since it is no longer on top of the stack, and execution of run() begins, since it *is* on top of the stack.  The first thing Basics.run does is println.  println is a function call, function calls go on the stack, so println goes on top of the stack and begins execution...
 
 Each time an object is created, that object is stored on the Heap.  When we, for instance, call new Basics("red", -3), that constructor call goes on the stack, executes, creates the appropriate object on the Heap, and returns a reference to that object.  The created object itself is always stored on the Heap.  Our variable/value contains only a reference.  Variables and values exist in the context of some method/function execution on the stack.  This is called the "stack frame" and each method/function execution gets its own stack frame.  The stack frame is how local scope is implemented in scala.
+
+#### Exceptions and Errors
+
+In Java/Scala, problems that occur during runtime are represented with two different possible objects: Exception and Error.  These objects are similar, they both subclass a rarely-used-directly class called Throwable, but Error and Exception ought be used differently.  An Exception is used when some exceptional behaviour occurs, and we typically attempt to recover from Exceptions.  An Erorr is used, most often by Java libraries, when a problem occurs with the JVM itself.  We typically cannot or should not attempt to recover from Errors.
+
+Exception examples: ArrayIndexOutOfBoundsException, FileNotFoundException, ArithmeticException, NullPointerException, ...
+(NPE occurs when we try to call a method or access a field on something that is null.  This is always the case)
+null is a special value for reference types that indicates the reference does not point to an object
+Error examples: OutOfMemoryError (no more space on Heap), StackOverflowError (no more space on Stack)
+
+We attempt to recover from exceptions using try-catch blocks.  Code that may cause an exception is written in the try block, and machinery for handling specific exceptions is written in the catch block.  Try-catch can be combined with finally to make try-catch-finally.  In Scala we don't use multiple catch blocks, instead we just put multiple cases inside our catch block.  Code executed in a try block can have its exceptions caught even through many nested methods, though the throwing of Exceptions/Errors interrupts normal program flow.  In our code, we'll be writing our own Exceptions, throwing Exceptions, catching and handling those Exceptions.  We want to throw Exceptions when problems occur, and we want to catch and handle Exceptions where we have the ability to fix those problems.
+
+Note that throwing Exceptions is a side effect, so Scala provides tools to handle problems without touching Exceptions or try-catch.  Try and Option are useful types for FP style problem solving.
+

@@ -7,4 +7,5 @@ object Main {
     val cli = new Cli()
     cli.menu()
   }
+
 }
