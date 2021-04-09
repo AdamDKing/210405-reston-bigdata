@@ -15,6 +15,8 @@ object Main {
     // this has a fancy name: Uniform Access Principle
     //Basics.run
     //StackHeap.run
-    FunctionsOperators.run
+    //FunctionsOperators.run
+    //Options.run
+    QuickExceptions.run
   }
 }
