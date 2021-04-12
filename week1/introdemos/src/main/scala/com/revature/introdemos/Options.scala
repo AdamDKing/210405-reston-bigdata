@@ -31,7 +31,7 @@ object Options {
       if (condition) Some("heres your string") else None
     }
 
-    // Work with a Seq of Options, use match case to extract values
+    // Work with a List of Options, use match case to extract values
     List(1, 2, 3, 4, 5)
       .map((x: Int) => {
         if (x % 2 == 1) Some(x) else None

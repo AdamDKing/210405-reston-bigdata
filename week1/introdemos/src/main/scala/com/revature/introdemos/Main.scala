@@ -17,6 +17,8 @@ object Main {
     //StackHeap.run
     //FunctionsOperators.run
     //Options.run
-    QuickExceptions.run
+    //QuickExceptions.run
+    // CaseClasses.run
+    Futures.run
   }
 }

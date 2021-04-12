@@ -104,3 +104,12 @@ We attempt to recover from exceptions using try-catch blocks.  Code that may cau
 
 Note that throwing Exceptions is a side effect, so Scala provides tools to handle problems without touching Exceptions or try-catch.  Try and Option are useful types for FP style problem solving.
 
+####  Threads
+
+A Thread is a single flow of program execution.  Thus far, we've (mostly) only worked with the main thread.  We watched method execution on the stack while our program was running, we looked at the main thread there.  I say "mostly" because calls to println involve another thread, and generally IO involves multiple threads.
+
+We're not limited to 1 thread, our programs can have multiple simultaneous flows of execution.  In fact, we're not limited by the number of processors we have on our machine either -- we can have 1000s of threads on a machine with 2 cores.  The number of threads that can simultaneouly be executing commands is limited by our hardware, but the number of flows of execution in our application is not.  Some threads will wait while other threads run.
+
+In general, multithreading / parallel execution is useful for large tasks that can be broken up into multiple pieces to run simultaneously (process 100gb of files), is useful for slow tasks that can run in the background (send a confirmation email upon signup), and is useful for listening -- having processes occur based on some future input/event.  That's not an exhaustive list, it's just some common scenarios.
+
+Mostly, we won't be writing the machinery to do multithreading.  One of the things big data tooling does for us is spread processing tasks out across a cluster (cores within each machine/across multiple machines).  We *will* need to understand it.  We're going to take a look at Futures in Scala, which allow us to execute code that may return a result at some future point.  Futures are an abstraction for working with threads, similar to Promises in JS.
