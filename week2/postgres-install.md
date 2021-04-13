@@ -1,5 +1,6 @@
 sudo apt-get update
 sudo apt-get install postgresql postgresql-contrib
+sudo service postgresql start
 sudo -u postgres psql postgres
 \password postgres
 \q
